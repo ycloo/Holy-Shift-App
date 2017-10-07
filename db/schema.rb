@@ -10,7 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171004235019) do
+ActiveRecord::Schema.define(version: 20171006215330) do
+
+  create_table "shifts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "start_time"
+    t.string "end_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "shifts_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "user_id"
+    t.bigint "shift_id"
+    t.index ["shift_id"], name: "index_shifts_users_on_shift_id"
+    t.index ["user_id"], name: "index_shifts_users_on_user_id"
+  end
+
+  create_table "shits_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "user_id"
+    t.bigint "shift_id"
+    t.index ["shift_id"], name: "index_shits_users_on_shift_id"
+    t.index ["user_id"], name: "index_shits_users_on_user_id"
+  end
+
+  create_table "teams", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -20,4 +47,8 @@ ActiveRecord::Schema.define(version: 20171004235019) do
     t.string "password_digest"
   end
 
+  add_foreign_key "shifts_users", "shifts"
+  add_foreign_key "shifts_users", "users"
+  add_foreign_key "shits_users", "shifts"
+  add_foreign_key "shits_users", "users"
 end
