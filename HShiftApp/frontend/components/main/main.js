@@ -59,7 +59,7 @@ class Main extends React.Component {
                 {key: 'Cool Club'},
                 {key: 'Volunteering at the park'},
               ]}
-              renderItem={({item}) => <TouchableOpacity onPress={() => this.navigateToUser(item.key)}><Text style={styles.item}>{item.key}</Text></TouchableOpacity>}
+              renderItem={({item}) => <TouchableOpacity onPress={() => this.navigateToOrg(item.key)}><Text style={styles.item}>{item.key}</Text></TouchableOpacity>}
             />
           </ScrollView>
 
