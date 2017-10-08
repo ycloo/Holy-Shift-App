@@ -13,17 +13,16 @@ import {
   ScrollView
 } from 'react-native';
 import { Provider } from 'react-redux';
-import configureStore from './frontend/store/store';
+import {configureStore} from './frontend/store/store';
 import MainNavigator from './frontend/components/main/main_navigator';
+import MainContainer from './frontend/components/main/main_container';
 
 export default class App extends Component<{}> {
   render() {
     return (
-      <View style={styles.container}>
-        <Provider store={configureStore()}>
-          <MainNavigator/>
-        </Provider>
-      </View>
+      <Provider store={configureStore()}>
+        <MainNavigator/>
+      </Provider>
     );
   }
 }

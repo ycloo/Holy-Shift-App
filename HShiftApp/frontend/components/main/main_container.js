@@ -1,17 +1,17 @@
 import { connect } from 'react-redux';
-import {receiveUser} from '../../actions/user_actions';
+import {receiveTeam} from '../../actions/team_actions';
 import Main from './main';
 
 const mapStateToProps = (state) => {
   return {
     currentUser: state.currentUser,
-    organization: state.organization,
+    teams: state.teams,
     shifts: state.shifts
   };
 };
 
 const mapDispatchToProps = dispatch => ({
-  receiveUser: user => dispatch(receiveUser(user))
+  receiveTeam: team => dispatch(receiveTeam(team))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

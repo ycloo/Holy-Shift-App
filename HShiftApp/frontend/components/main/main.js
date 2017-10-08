@@ -12,25 +12,25 @@ import {
   Linking
 } from 'react-native';
 import Dimensions from 'Dimensions';
-import UserPageContainer from '../organization/organization_index_container';
+import TeamIndexContainer from '../team/team_index_container';
 
 class Main extends React.Component {
   constructor(props) {
     super(props);
 
-    this.navigateToOrganization = this.navigateToOrganization.bind(this);
+    this.navigateToTeam = this.navigateToTeam.bind(this);
   }
 
   componentDidMount() {
-    // this.props.dispatch(getOrganization(this.props.organization));
+    // this.props.dispatch(getTeam(this.props.organization));
   }
 
-  navigateToUser(org) {
+  navigateToTeam(team) {
     // console.log(this.props);
-    this.props.receiveOrganization(org);
+    this.props.receiveTeam(team);
 
     this.props.navigator.push({
-        component: OrganizationIndex,
+        component: TeamIndexContainer,
         title: 'User Page',
         navigationBarHidden: true
       });
@@ -43,10 +43,10 @@ class Main extends React.Component {
       <View style={styles.container}>
         <View style={styles.topBar}>
           <Text style={styles.title}>
-            Holy Shift
+            Holy Shift App!
           </Text>
           <Text style={styles.title}>
-            Select Organization:
+            Select Team:
           </Text>
         </View>
 
@@ -57,9 +57,9 @@ class Main extends React.Component {
               data={[
                 {key: 'Work'},
                 {key: 'Cool Club'},
-                {key: 'Volunteering at the park'},
+                {key: 'Volunteering'},
               ]}
-              renderItem={({item}) => <TouchableOpacity onPress={() => this.navigateToOrg(item.key)}><Text style={styles.item}>{item.key}</Text></TouchableOpacity>}
+              renderItem={({item}) => <TouchableOpacity onPress={() => this.navigateToTeam(item.key)}><Text style={styles.item}>{item.key}</Text></TouchableOpacity>}
             />
           </ScrollView>
 
