@@ -1,5 +1,7 @@
 import merge from 'lodash/merge';
 
+import { RECEIVE_ALL_SHIFTS, RECEIVE_SINGLE_SHIFT } from '../actions/shift_actions';
+
 const defaultShifts = {
   entities: {},
   currentShift: null
@@ -7,9 +9,9 @@ const defaultShifts = {
 const shiftsReducer = (state=defaultShifts, action) => {
   Object.freeze(state);
   switch(action.type) {
-    case 'RECEIVE_ALL_SHIFTS':
+    case RECEIVE_ALL_SHIFTS:
       return merge({}, state, {entities: action.shifts})
-    case 'RECEIVE_SINGLE_SHIFT':
+    case RECEIVE_SINGLE_SHIFT:
       const shift = action.shift;
       let newState = merge({}, state);
       newState.currentShift = shift;

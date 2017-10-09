@@ -1,5 +1,7 @@
 import merge from 'lodash/merge';
 
+import { RECEIVE_ALL_TEAMS, RECEIVE_SINGLE_TEAM, RESET_TEAM, REMOVE_TEAM } from '../actions/team_actions';
+
 const defaultTeam = {
   entities: {},
   currentTeam: null
@@ -7,17 +9,17 @@ const defaultTeam = {
 const teamsReducer = (state=defaultTeam, action) => {
   Object.freeze(state);
   switch(action.type) {
-    case 'RECEIVE_ALL_TEAMS':
+    case RECEIVE_ALL_TEAMS:
       return merge({}, state, {entities: action.teams})
-    case 'RECEIVE_SINGLE_TEAM':
+    case RECEIVE_SINGLE_TEAM:
       const team = action.team;
       let newState = merge({}, state);
       newState.currentTeam = team;
       newState.entities[team.id] = team;
       return newState;
-    case 'RESET_TEAM':
+    case RESET_TEAM:
       return merge({}, state, {currentTeam: null});
-    case 'REMOVE_TEAM':
+    case REMOVE_TEAM:
       const team2 = action.team;
       let newState2 = merge({}, state);
       delete newState2.entities[team2.id];
