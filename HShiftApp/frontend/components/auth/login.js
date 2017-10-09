@@ -9,9 +9,8 @@ import {
 } from 'react-native';
 import Dimensions from 'Dimensions';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-
-
-// import {loginUser, signupUser, addAlert} from '../actions';
+import { connect } from 'react-redux';
+import {receiveCurrentUser} from '../../actions/session_actions';
 
 class Login extends React.Component {
   constructor(props) {
@@ -26,14 +25,9 @@ class Login extends React.Component {
   }
 
   onSignIn() {
-    // let {dispatch, fields: {email, password}} = this.props;
-    console.log(this.state);
+    console.log(this.props.state);
 
-    // dispatch(loginUser(email.value, password.value)).then(() => {
-    //   this.setState({
-    //     loading: false
-    //   });
-    // });
+    this.props.receiveCurrentUser('123');
   }
 
   render() {
@@ -108,6 +102,7 @@ const styles = StyleSheet.create({
     height: 26,
     color: '#000053',
     textAlign: 'center',
+    width: '100%'
   },
   buttonContainer: {
     borderRadius: 20,
@@ -131,4 +126,11 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Login;
+const mapStateToProps = state => ({
+  state
+});
+const mapDispatchToProps = dispatch => ({
+  receiveCurrentUser: (id) => dispatch(receiveCurrentUser(id))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

@@ -18,7 +18,7 @@ class AppEntry extends React.Component {
 
   render() {
     const renderMainView = () => {
-      if (this.props.userId) {
+      if (this.props.currentUser) {
         return (
           <MainNavigator/>
         );
