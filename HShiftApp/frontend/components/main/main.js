@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {
   StyleSheet,
   Text,
@@ -13,12 +12,22 @@ import {
 } from 'react-native';
 import Dimensions from 'Dimensions';
 import TeamIndexContainer from '../team/team_index_container';
+import {
+  Menu,
+  MenuOptions,
+  MenuOption,
+  MenuTrigger,
+  renderers
+} from 'react-native-popup-menu';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+
 
 class Main extends React.Component {
   constructor(props) {
     super(props);
 
     this.navigateToTeam = this.navigateToTeam.bind(this);
+    this.handleLogOut = this.handleLogOut.bind(this);
   }
 
   componentDidMount() {
@@ -36,21 +45,23 @@ class Main extends React.Component {
       });
   }
 
+  handleLogOut() {
+    this.props.logoutUser();
+  }
+
 
 
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.topBar}>
+        <View style={styles.top}>
           <Text style={styles.title}>
             Holy Shift App!
           </Text>
           <Text style={styles.title}>
             Select Team:
           </Text>
-        </View>
-
-        <ScrollView
+          <ScrollView
             style={styles.list}
             automaticallyAdjustContentInsets={false}>
             <FlatList
@@ -60,8 +71,22 @@ class Main extends React.Component {
                 {key: 'Volunteering'},
               ]}
               renderItem={({item}) => <TouchableOpacity onPress={() => this.navigateToTeam(item.key)}><Text style={styles.item}>{item.key}</Text></TouchableOpacity>}
-            />
+              />
           </ScrollView>
+        </View>
+
+          <View style={styles.navBar}>
+            <Menu style={styles.menu} renderer={renderers.SlideInMenu}>
+              <MenuTrigger>
+               <Icon name='chevron-up' size={38} color="#0c9258"/>
+             </MenuTrigger>
+             <MenuOptions style={styles.options}>
+               <MenuOption style={styles.logoutOption} onSelect={this.handleLogOut} >
+                 <Text style={styles.logout}>Log Out</Text>
+               </MenuOption>
+             </MenuOptions>
+           </Menu>
+          </View>
 
       </View>
     );
@@ -70,10 +95,11 @@ class Main extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     top: 0,
     left: 0,
     height: Dimensions.get('window').height*.9,
-    alignItems: 'center'
+    alignItems: 'center',
   },
   title: {
     top: Dimensions.get('window').height*.08,
@@ -81,16 +107,26 @@ const styles = StyleSheet.create({
     fontSize: 28,
     alignSelf: 'center'
   },
-  topBar: {
-    position: 'absolute',
-    zIndex: 1,
-    height: Dimensions.get('window').height*.15,
-    left: 0,
-    top: 0,
-    width: '100%'
+  top: {
+    flex: 9,
+  },
+  logout: {
+    flex: 1,
+    color: 'red',
+    padding: 20,
+    fontSize: 20,
+    alignSelf: 'center',
   },
   list: {
     top: Dimensions.get('window').height*.3
+  },
+  navBar: {
+    flex: 1,
+    backgroundColor: '#2ecc71',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    width: '100%'
   },
   item: {
     fontSize: 20,

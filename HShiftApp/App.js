@@ -14,14 +14,13 @@ import {
 } from 'react-native';
 import { Provider } from 'react-redux';
 import {configureStore} from './frontend/store/store';
-import MainNavigator from './frontend/components/main/main_navigator';
-import MainContainer from './frontend/components/main/main_container';
+import AppEntry from './frontend/components/app_entry';
 
-export default class App extends Component<{}> {
+class App extends Component {
   render() {
     return (
       <Provider store={configureStore()}>
-        <MainNavigator/>
+        <AppEntry/>
       </Provider>
     );
   }
@@ -45,3 +44,6 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
+
+
+export default App;

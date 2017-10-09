@@ -7,6 +7,7 @@ import {
   NavigatorIOS
 } from 'react-native';
 import MainContainer from './main_container';
+import { MenuContext } from 'react-native-popup-menu';
 
 
 class MainNavigator extends React.Component {
@@ -17,6 +18,7 @@ class MainNavigator extends React.Component {
   render() {
 
     return (
+      <MenuContext>
         <NavigatorIOS
           initialRoute={{
             component: MainContainer,
@@ -26,6 +28,7 @@ class MainNavigator extends React.Component {
           style={{flex: 1}}
           interactivePopGestureEnabled={true}
           />
+      </MenuContext>
     );
   }
 
