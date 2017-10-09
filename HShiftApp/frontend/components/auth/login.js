@@ -7,6 +7,9 @@ import {
   TextInput,
   TouchableOpacity
 } from 'react-native';
+import Dimensions from 'Dimensions';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+
 
 // import {loginUser, signupUser, addAlert} from '../actions';
 
@@ -15,7 +18,6 @@ class Login extends React.Component {
     super(props);
 
     this.state = {
-      loading: false,
       email: '',
       password: ''
     }
@@ -26,9 +28,7 @@ class Login extends React.Component {
   onSignIn() {
     // let {dispatch, fields: {email, password}} = this.props;
     console.log(this.state);
-    this.setState({
-      loading: true
-    });
+
     // dispatch(loginUser(email.value, password.value)).then(() => {
     //   this.setState({
     //     loading: false
@@ -37,54 +37,41 @@ class Login extends React.Component {
   }
 
   render() {
-    let {fields: {email, password}} = this.props;
-    let {handleSubmit} = this.props;
-
-    if (this.state.loading) {
-      return (
-        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-          <Text>
-            Loading...
-          </Text>
-        </View>
-      )
-    } else {
       return (
         <View style={styles.container}>
           <View style={styles.titleContainer}>
             <Text style={styles.title}>
-              To-Do
+              Holy Shift App
             </Text>
           </View>
-          <View style={styles.field}>
-            <TextInput
-              onChangeText={text => this.setState({email: text})}
-              placeholder="Email"
-              style={styles.textInput}/>
+          <View style={styles.inputs}>
+            <View style={styles.field}>
+              <Icon name={`email-outline`} size={26} color='#000053'/>
+              <TextInput
+                onChangeText={text => this.setState({email: text})}
+                placeholder="Email"
+                style={styles.textInput}/>
+            </View>
+            <View style={styles.field}>
+              <Icon name={`lock-outline`} size={26} color='#000053'/>
+              <TextInput
+                onChangeText={text => this.setState({password: text})}
+                placeholder="Password"
+                secureTextEntry={true}
+                style={styles.textInput}/>
+            </View>
+            <View style={styles.buttonContainer}>
+              <TouchableOpacity style={styles.login} onPress={this.onSignIn}>
+                <Text style={styles.loginText}>Log In</Text>
+              </TouchableOpacity>
+            </View>
           </View>
-          <View style={styles.field}>
-            <TextInput
-              onChangeText={text => this.setState({password: text})}
-              placeholder="Password"
-              style={styles.textInput}/>
-          </View>
-          <View style={styles.buttonContainer}>
-            <TouchableOpacity onPress={this.onSignIn}>
-              <Text style={styles.button}>
-                Sign In
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={this.onSignUp}>
-              <Text style={styles.button}>
-                Sign Up
-              </Text>
-            </TouchableOpacity>
-          </View>
+
         </View>
       );
     }
 
-  }
+
 };
 
 const styles = StyleSheet.create({
@@ -93,36 +80,50 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'stretch',
     paddingTop: 20,
-    backgroundColor: '#2ecc71'
+    top: Dimensions.get('window').height*.01,
   },
   titleContainer: {
     padding: 10
   },
   title: {
-    color: 'white',
+    color: '#000053',
     fontSize: 35,
-    marginTop: 20,
-    marginBottom: 20
+    top: Dimensions.get('window').height*.05,
+    marginBottom: 20,
+    textAlign: 'center'
+  },
+  inputs: {
+    top: Dimensions.get('window').height*.11,
   },
   field: {
     borderRadius: 5,
     padding: 5,
-    paddingLeft: 8,
-    margin: 7,
-    marginTop: 0,
-    backgroundColor: 'white'
-  },
-  textInput: {
-    height: 26
-  },
-  buttonContainer: {
-    padding: 20,
-    flexDirection: 'row',
-    justifyContent: 'space-around',
+    margin: 20,
+    backgroundColor: 'white',
+    borderBottomColor: '#000053',
+    borderBottomWidth: 1,
     alignItems: 'center'
   },
-  button: {
-    fontSize: 30,
+  textInput: {
+    height: 26,
+    color: '#000053',
+    textAlign: 'center',
+  },
+  buttonContainer: {
+    borderRadius: 20,
+    padding: 20,
+    width: '75%',
+    alignSelf: 'center',
+  },
+  login: {
+    borderRadius: 5,
+    borderColor: 'transparent',
+    backgroundColor: '#000053',
+    padding: 20,
+  },
+  loginText: {
+    textAlign: 'center',
+    fontSize: 24,
     color: 'white'
   },
   formError: {

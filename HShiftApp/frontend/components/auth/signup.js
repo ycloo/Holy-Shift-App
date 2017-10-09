@@ -1,169 +1,145 @@
-import React from 'react'
+import React from 'react';
+
 import {
   StyleSheet,
   Text,
+  View,
   TextInput,
-  TouchableOpacity,
-  View
-} from 'react-native'
+  TouchableOpacity
+} from 'react-native';
 import Dimensions from 'Dimensions';
-import { Field, reduxForm } from 'redux-form'
-import { Container, Content, Grid, Col, Form, Item, Input, Label, Button } from 'native-base';
-// import { loginUser, signupUser, addAlert } from '../../actions';
-// import {authUser} from '../../actions';
-import Login from './login';
-import ButtonTextStyle from '../styling/button_text_style';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const renderInput = ({
-  input: { onChange, ...restInput },
-  label,
-  type,
-  secureTextEntry,
-  meta: { touched, error }
-}) => {
-  console.log(restInput.value);
-  return (
-    <View>
-      <Item style={ styles.formItem } floatingLabel>
-        <Input
-          placeholder={label}
-          style={styles.input}
-          underlineColorAndroid={'transparent'}
-          selectionColor={'rgba(245,219,0,0.8)'}
-          tintColor={'rgba(245,219,0,0.8)'}
-          secureTextEntry={secureTextEntry}
-          onChangeText={onChange}
-        />
-      </Item>
-      <View>{touched && (error && <Text style={styles.error}>{error}</Text>)}</View>
-    </View>
-  )
-}
 
-const onSignUp = (props, dispatch, payload) => {
-  console.log(props);
-  // dispatch(signupUser(props.email, props.password, props.firstName, props.lastName));
-  payload.navigator.pop();
-}
+// import {signupUser, signupUser, addAlert} from '../actions';
 
-const SignUpForm = props => {
-    const { handleSubmit } = props;
-    return (
-      <Container style={ styles.container }>
-        <Content style={ styles.content }>
-          <Form style={ styles.form }>
-            <Field name="email" label="Email" component={renderInput} />
-            <Field name="password" secureTextEntry={true} label="Password" component={renderInput} />
-            <Field name="firstName" label="First Name" component={renderInput} />
-            <Field name="lastName" label="Last Name" component={renderInput} />
-            <Grid style={styles.buttonGrid}>
-              <Col style={styles.buttonContainer}>
-                <Button
-                  androidRippleColor='rgba(255,255,255,0.4)'
-                  full
-                  bordered
-                  style={styles.signupButton}
-                  transparent
-                  onPress={handleSubmit(onSignUp)} >
-                  <ButtonTextStyle>
-                    <Text uppercase={false}>
-                      register
-                    </Text>
-                  </ButtonTextStyle>
-                </Button>
-              </Col>
-            </Grid>
-          </Form>
-        </Content>
-      </Container>
-    )
-}
+class SignUp extends React.Component {
+  constructor(props) {
+    super(props);
 
-const validate = formProps => {
-  const errors = {};
-  if (!formProps.email) {
-    errors.email = 'Required'
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(formProps.email)) {
-    errors.email = 'Invalid email address'
+    this.state = {
+      email: '',
+      password: '',
+      firstName: '',
+      lastName: ''
+    }
+
+    this.onSignUp = this.onSignUp.bind(this);
   }
-  if (!formProps.password) {
-    errors.password = 'Required'
-  } else if (formProps.password.length < 6) {
-    errors.password = 'Must be 6 characters or more'
-  }
-  if (!formProps.firstName) {
-    errors.firstName = 'Required'
-  }
-  if (!formProps.lastName) {
-    errors.lastName = 'Required'
-  }
-  if (!formProps.partnerEmail) {
-    errors.partnerEmail = 'Required'
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(formProps.email)) {
-    errors.partnerEmail = 'Invalid email address'
-  }
-  return errors
-}
 
-export default reduxForm({
-  form: 'login',
-  validate: validate,
-  fields: ['email', 'password', 'firstName', 'lastName'],
-}, null, null)(SignUpForm);
+  onSignUp() {
+    // let {dispatch, fields: {email, password}} = this.props;
+    console.log(this.state);
+    // dispatch(signupUser(email.value, password.value)).then(() => {
+    //   this.setState({
+    //     loading: false
+    //   });
+    // });
+  }
 
-const styles = {
+  render() {
+      return (
+        <View style={styles.container}>
+          <View style={styles.titleContainer}>
+            <Text style={styles.signUpTitle}>
+              Holy Shift App
+            </Text>
+          </View>
+          <View style={styles.inputs}>
+            <View style={styles.field}>
+              <Icon name={`email-outline`} size={26} color='#000053'/>
+              <TextInput
+                onChangeText={text => this.setState({email: text})}
+                placeholder="Email"
+                style={styles.textInput}/>
+            </View>
+            <View style={styles.field}>
+              <Icon name={`lock-outline`} size={26} color='#000053'/>
+              <TextInput
+                onChangeText={text => this.setState({password: text})}
+                placeholder="Password"
+                style={styles.textInput}/>
+            </View>
+            <View style={styles.field}>
+              <TextInput
+                onChangeText={text => this.setState({firstName: text})}
+                placeholder="First Name"
+                style={styles.textInput}/>
+            </View>
+            <View style={styles.field}>
+              <TextInput
+                onChangeText={text => this.setState({lastName: text})}
+                placeholder="Last Name"
+                style={styles.textInput}/>
+            </View>
+            <View style={styles.buttonContainer}>
+              <TouchableOpacity style={styles.signup} onPress={this.onSignUp}>
+                <Text style={styles.signupText}>Sign Up</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+
+        </View>
+      );
+    }
+
+
+};
+
+const styles = StyleSheet.create({
   container: {
-    display: 'flex',
-    height: '100%',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
+    flex: 1,
+    justifyContent: 'flex-start',
+    alignItems: 'stretch',
+    paddingTop: 20,
+    top: Dimensions.get('window').height*.01,
   },
-  content: {
-    top: Dimensions.get('window').height*.05,
-    height: Dimensions.get('window').height*.9
+  titleContainer: {
+    padding: 10
   },
-  form: {
-    paddingLeft: Dimensions.get('window').width*.1,
-    paddingRight: Dimensions.get('window').width*.1,
-    height: '100%',
+  signUpTitle: {
+    color: '#000053',
+    fontSize: 30,
+    marginBottom: 20,
+    textAlign: 'center'
   },
-  formItem:{
-    marginLeft: 6,
-    marginRight: 6
+  inputs: {
+
   },
-  label: {
-    color: 'black',
-    textAlign: 'center',
-    fontSize: 14,
+  field: {
+    borderRadius: 5,
+    padding: 5,
+    margin: 20,
+    backgroundColor: 'white',
+    borderBottomColor: '#000053',
+    borderBottomWidth: 1,
+    alignItems: 'center'
   },
-  input: {
+  textInput: {
+    height: 26,
+    color: '#000053',
     textAlign: 'center',
   },
   buttonContainer: {
-    marginTop: 24,
-    marginLeft: 6,
-    marginRight: 6
-  },
-  signinButton: {
-    borderColor: '#12512d',
-    borderRadius: 5
-  },
-  signinText: {
-    color: 'black',
-    fontSize: 12,
-  },
-  signupButton: {
-    borderRadius: 50,
-    borderColor: 'transparent',
-    backgroundColor: '#cdf9d8',
-    marginTop: Dimensions.get('window').height*.05,
-  },
-  error: {
-    color: 'red',
-  },
-  login: {
+    borderRadius: 20,
+    padding: 20,
+    width: '75%',
     alignSelf: 'center',
-    marginTop: 10
+  },
+  signup: {
+    borderRadius: 5,
+    borderColor: 'transparent',
+    backgroundColor: '#000053',
+    padding: 20,
+  },
+  signupText: {
+    textAlign: 'center',
+    fontSize: 24,
+    color: 'white'
+  },
+  formError: {
+    color: 'red'
   }
-}
+});
+
+export default SignUp;

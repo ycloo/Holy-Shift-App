@@ -29,10 +29,8 @@ class SignUpNavigator extends React.Component {
       <View style={{flex: 1}}>
         <View style={styles.topBar}>
           <TouchableOpacity onPress={this.handleBack} style={styles.back}>
-            <Icon name="chevron-left" size={30} color='#12512d'/>
+            <Icon name="chevron-left" size={30} color='#000053'/>
           </TouchableOpacity>
-          <Text style={styles.title}>Sign Up</Text>
-          <Text style={styles.placeholder}></Text>
         </View>
         <SignUp navigator={this.props.navigator}/>
       </View>
@@ -62,7 +60,7 @@ const styles = StyleSheet.create({
     top: Dimensions.get('window').height*.04,
     height: Dimensions.get('window').height*.06,
     fontSize: 20,
-    color: '#12512d',
+    color: '#000053',
   },
   placeholder: {
     width: '15%'
