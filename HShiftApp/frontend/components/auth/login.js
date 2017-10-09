@@ -1,196 +1,133 @@
-import React from 'react'
+import React from 'react';
+
 import {
   StyleSheet,
   Text,
-  TextInput,
-  TouchableOpacity,
   View,
-  Image
-} from 'react-native'
-import Dimensions from 'Dimensions'
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { Field, reduxForm } from 'redux-form'
-import { Container, Content, Grid, Col, Form, Item, Input, Label, Button } from 'native-base';
-// import { loginUser, signupUser, addAlert } from '../../actions';
-// import {authUser} from '../../actions';
-import SignUp from './signup';
-import Header from '../styling/header';
-import ButtonTextStyle from '../styling/button_text_style';
-import BodyText from '../styling/body_text';
+  TextInput,
+  TouchableOpacity
+} from 'react-native';
 
-const renderInput = ({
-  input: { onChange, ...restInput },
-  label,
-  type,
-  secureTextEntry,
-  meta: { touched, error, warning }
-}) => {
-  if (label === "email") {
-    icon = "email-outline"
-  } else {
-    icon = "lock-outline"
+// import {loginUser, signupUser, addAlert} from '../actions';
+
+class Login extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      loading: false,
+      email: '',
+      password: ''
+    }
+
+    this.onSignIn = this.onSignIn.bind(this);
   }
-  return (
-    <View>
-      <Item style={ styles.formItem }>
-        <Icon name={`${icon}`} size={26} color='#000053'/>
-        <Input
-          placeholder={label}
-          style={styles.input}
-          selectionColor={'#12512d'}
-          tintColor={'#12512d'}
-          secureTextEntry={secureTextEntry}
-          onChangeText={onChange}
-          {...restInput} />
-      </Item>
-    </View>
-  )
-}
 
-// const TryLogin = () => {
-//   return (
-//     <Input onChangeText={(text) => console.log(text);}>
-//
-//     </Input>
-//   )
-// }
-
-const onSignIn = (props, dispatch) => {
-  console.log(props);
-  // dispatch(loginUser(props.email, props.password));
-}
-
-// const demoLogin = (props, dispatch) => {
-//   dispatch(loginUser('AwesomeUser@awesome.com', 'awesome'));
-// }
-//
-// const partnerLogin = (props, dispatch) => {
-//   dispatch(loginUser('AwesomePartner@awesome.com', 'awesome'));
-// }
-
-const LSForm = props => {
-    const { handleSubmit } = props;
-    return (
-      <Container style={ styles.container }>
-        <Content style={ styles.content }>
-          <Text style={styles.logo}>Holy Shift App</Text>
-          <Form style={ styles.form }>
-            <Field name="email" label="email" component={renderInput} />
-            <Field name="password" secureTextEntry={true} label="password" component={renderInput} />
-            <Grid style={styles.buttonGrid}>
-              <Col style={styles.buttonContainer}>
-                <Button
-                  full
-                  bordered
-                  style={styles.signinButton}
-                  transparent
-                  onPress={handleSubmit(onSignIn)} >
-                  <ButtonTextStyle>
-                    <Text uppercase={false} style={styles.signinText}>
-                    login
-                    </Text>
-                  </ButtonTextStyle>
-                </Button>
-              </Col>
-            </Grid>
-          </Form>
-        </Content>
-      </Container>
-    )
-}
-
-const warn = formProps => {
-  const warnings = {}
-  if (!formProps.email) {
-    warnings.email = 'Required'
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(formProps.email)) {
-    warnings.email = 'Invalid email address'
+  onSignIn() {
+    // let {dispatch, fields: {email, password}} = this.props;
+    console.log(this.state);
+    this.setState({
+      loading: true
+    });
+    // dispatch(loginUser(email.value, password.value)).then(() => {
+    //   this.setState({
+    //     loading: false
+    //   });
+    // });
   }
-  if (!formProps.password) {
-    warnings.password = 'Required'
-  } else if (formProps.password.length < 6) {
-    warnings.password = 'Must be 6 characters or more'
+
+  render() {
+    let {fields: {email, password}} = this.props;
+    let {handleSubmit} = this.props;
+
+    if (this.state.loading) {
+      return (
+        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+          <Text>
+            Loading...
+          </Text>
+        </View>
+      )
+    } else {
+      return (
+        <View style={styles.container}>
+          <View style={styles.titleContainer}>
+            <Text style={styles.title}>
+              To-Do
+            </Text>
+          </View>
+          <View style={styles.field}>
+            <TextInput
+              onChangeText={text => this.setState({email: text})}
+              placeholder="Email"
+              style={styles.textInput}/>
+          </View>
+          <View style={styles.field}>
+            <TextInput
+              onChangeText={text => this.setState({password: text})}
+              placeholder="Password"
+              style={styles.textInput}/>
+          </View>
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity onPress={this.onSignIn}>
+              <Text style={styles.button}>
+                Sign In
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={this.onSignUp}>
+              <Text style={styles.button}>
+                Sign Up
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      );
+    }
+
   }
-  return warnings
-}
+};
 
-export default reduxForm({
-  form: 'login',
-  fields: ['email', 'password'],
-}, null, null)(LSForm);
-
-const styles = {
+const styles = StyleSheet.create({
   container: {
-    top: Dimensions.get('window').height*.03,
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
+    flex: 1,
+    justifyContent: 'flex-start',
+    alignItems: 'stretch',
+    paddingTop: 20,
+    backgroundColor: '#2ecc71'
   },
-  content: {
-    paddingLeft: Dimensions.get('window').width*.1,
-    paddingRight: Dimensions.get('window').width*.1,
-    height: '100%',
+  titleContainer: {
+    padding: 10
   },
   title: {
-    textAlign: 'center',
-    fontSize: 24
+    color: 'white',
+    fontSize: 35,
+    marginTop: 20,
+    marginBottom: 20
   },
-  logo: {
-    width: '100%',
-    height: Dimensions.get('window').width*.4,
-    margin: Dimensions.get('window').width*.2,
-    alignSelf: 'center',
-    textAlign: 'center',
-    color: 'black',
-    fontSize: 28,
+  field: {
+    borderRadius: 5,
+    padding: 5,
+    paddingLeft: 8,
+    margin: 7,
+    marginTop: 0,
+    backgroundColor: 'white'
   },
-  formItem:{
-    marginLeft: 6,
-    marginRight: 6
-  },
-  input: {
-    paddingLeft: 30,
-    color: '#000053'
-  },
-  label: {
-    color: 'black',
-    textAlign: 'center',
-    fontSize: 14,
-  },
-  buttonGrid: {
+  textInput: {
+    height: 26
   },
   buttonContainer: {
-    marginTop: Dimensions.get('window').height*.05,
-  },
-  signinButton: {
-    borderRadius: 50,
-    borderColor: 'transparent',
-    backgroundColor: '#000053',
-  },
-  signinText: {
-    color: 'white',
-    fontSize: 12
-  },
-  demostuff: {
+    padding: 20,
     flexDirection: 'row',
-    justifyContent: 'center'
+    justifyContent: 'space-around',
+    alignItems: 'center'
   },
-  demoButton: {
-    width: 50,
-    height: 20
+  button: {
+    fontSize: 30,
+    color: 'white'
   },
-  signupButton: {
-    borderColor: 'black',
-  },
-  signupText: {
-    color: 'black',
-    fontSize: 12,
-  },
-  error: {
-    color: 'red',
-  },
-  warning: {
-    color: 'orange'
+  formError: {
+    color: 'red'
   }
-}
+});
+
+export default Login;
