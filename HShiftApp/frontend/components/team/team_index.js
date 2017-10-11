@@ -33,9 +33,6 @@ class TeamIndex extends React.Component {
       });
   }
 
-
-
-
   render() {
     return (
 

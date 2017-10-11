@@ -32,7 +32,7 @@ class ShiftDetail extends React.Component {
             <Icon name="chevron-left" size={30} color='#12512d'/>
           </TouchableOpacity>
           <Text style={styles.greeting}>{this.props.teams.currentTeam}!</Text>
-            <Text style={styles.greeting}>{this.props.shifts.currentShift} Shift</Text>
+          <Text style={styles.greeting}>{this.props.shifts.currentShift} Shift</Text>
         </View>
 
       </View>

@@ -99,13 +99,12 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   textInput: {
-    height: 26,
+    height: 50,
     color: '#000053',
     textAlign: 'center',
     width: '100%'
   },
   buttonContainer: {
-    borderRadius: 20,
     padding: 20,
     width: '75%',
     alignSelf: 'center',

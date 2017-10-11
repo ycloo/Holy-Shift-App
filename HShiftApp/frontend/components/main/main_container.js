@@ -4,10 +4,11 @@ import {logoutUser} from '../../actions/session_actions';
 import Main from './main';
 
 const mapStateToProps = (state) => {
+  console.log(state);
   return {
-    currentUser: state.currentUser,
     teams: state.teams,
-    shifts: state.shifts
+    shifts: state.shifts,
+    user: state.session.currentUser
   };
 };
 
