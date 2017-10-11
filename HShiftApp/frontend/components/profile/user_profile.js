@@ -11,6 +11,7 @@ import {
   Linking
 } from 'react-native';
 import Dimensions from 'Dimensions';
+import Header from '../styling/header';
 
 class UserProfile extends React.Component {
   constructor(props) {
@@ -45,11 +46,17 @@ class UserProfile extends React.Component {
   }
 
   render() {
+
     return(
       <View style={styles.container}>
+        <Header><Text>Dashboard</Text></Header>
         <View style={styles.tabs}>
-          <TouchableOpacity onPress={()=>this.changeTab('teamsTab')}><Text>Teams</Text></TouchableOpacity>
-          <TouchableOpacity onPress={()=>this.changeTab('shiftsTab')}><Text>Shifts</Text></TouchableOpacity>
+          <TouchableOpacity style={ this.state.teamsTab ? styles.tabActive : styles.tab } onPress={()=>this.changeTab('teamsTab')}>
+            <Text style={styles.tabText}>Teams</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={ this.state.shiftsTab ? styles.tabActive : styles.tab } onPress={()=>this.changeTab('shiftsTab')}>
+            <Text style={styles.tabText}>Shifts</Text>
+          </TouchableOpacity>
         </View>
         <Text>{this.props.user.username}</Text>
         <Text>{this.state.teamsTab ? 'Team' : 'Shift'}</Text>
@@ -66,6 +73,27 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     top: Dimensions.get('window').height*.10,
   },
+  tabs: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    width: '75%',
+    alignItems: 'center',
+  },
+  tab: {
+    padding: 20,
+    backgroundColor: 'white',
+    borderRadius: 5,
+  },
+  tabActive: {
+    padding: 20,
+    backgroundColor: 'gray',
+    borderRadius: 5,
+  },
+  tabText: {
+    fontSize: 20,
+    color: '#000053'
+  }
+
 
 });
 

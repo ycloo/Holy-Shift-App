@@ -17,7 +17,7 @@ class Login extends React.Component {
     super(props);
 
     this.state = {
-      username: '',
+      email: '',
       password: ''
     }
 
@@ -25,7 +25,9 @@ class Login extends React.Component {
   }
 
   onSignIn() {
-    this.props.receiveCurrentUser(this.state);
+    console.log(this.props.state);
+
+    this.props.receiveCurrentUser('123');
   }
 
   render() {
@@ -40,8 +42,8 @@ class Login extends React.Component {
             <View style={styles.field}>
               <Icon name={`email-outline`} size={26} color='#000053'/>
               <TextInput
-                onChangeText={text => this.setState({username: text})}
-                placeholder="Username"
+                onChangeText={text => this.setState({email: text})}
+                placeholder="Email"
                 style={styles.textInput}/>
             </View>
             <View style={styles.field}>
@@ -97,13 +99,12 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   textInput: {
-    height: 26,
+    height: 50,
     color: '#000053',
     textAlign: 'center',
     width: '100%'
   },
   buttonContainer: {
-    borderRadius: 20,
     padding: 20,
     width: '75%',
     alignSelf: 'center',
