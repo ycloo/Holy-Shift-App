@@ -4,7 +4,6 @@ import { RECEIVE_CURRENT_USER, RECEIVE_ERRORS, RESET_ERRORS, LOGOUT_USER } from 
 
 const nullUser = Object.freeze({
   currentUser: null,
-  errors: []
 });
 
 const noErrors = Object.freeze({

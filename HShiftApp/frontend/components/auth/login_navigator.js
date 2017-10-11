@@ -1,6 +1,5 @@
 import React from 'react';
 import SignUpNavigator from './signup_navigator';
-import Header from '../styling/header';
 import Link from '../styling/link';
 
 import {
