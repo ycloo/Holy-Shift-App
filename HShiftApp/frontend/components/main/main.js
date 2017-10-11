@@ -20,6 +20,7 @@ import {
   renderers
 } from 'react-native-popup-menu';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import UserProfileContainer from '../profile/user_profile_container';
 
 
 class Main extends React.Component {
@@ -27,6 +28,7 @@ class Main extends React.Component {
     super(props);
 
     this.navigateToTeam = this.navigateToTeam.bind(this);
+    this.navigateToProfile = this.navigateToProfile.bind(this);
     this.handleLogOut = this.handleLogOut.bind(this);
   }
 
@@ -35,12 +37,19 @@ class Main extends React.Component {
   }
 
   navigateToTeam(team) {
-    // console.log(this.props);
     this.props.receiveTeam(team);
 
     this.props.navigator.push({
         component: TeamIndexContainer,
-        title: 'User Page',
+        title: 'Team Index',
+        navigationBarHidden: true
+      });
+  }
+
+  navigateToProfile() {
+    this.props.navigator.push({
+        component: UserProfileContainer,
+        title: 'User Profile',
         navigationBarHidden: true
       });
   }
@@ -49,44 +58,48 @@ class Main extends React.Component {
     this.props.logoutUser();
   }
 
-
-
   render() {
     return (
       <View style={styles.container}>
         <View style={styles.top}>
+
+        <View style={styles.topBar}>
           <Text style={styles.title}>
-            Holy Shift App!
+            Welcome, {this.props.user.username}
           </Text>
           <Text style={styles.title}>
             Select Team:
           </Text>
-          <ScrollView
-            style={styles.list}
-            automaticallyAdjustContentInsets={false}>
-            <FlatList
-              data={[
-                {key: 'Work'},
-                {key: 'Cool Club'},
-                {key: 'Volunteering'},
-              ]}
-              renderItem={({item}) => <TouchableOpacity onPress={() => this.navigateToTeam(item.key)}><Text style={styles.item}>{item.key}</Text></TouchableOpacity>}
-              />
-          </ScrollView>
         </View>
+        <ScrollView
+          style={styles.list}
+          automaticallyAdjustContentInsets={false}>
+          <FlatList
+            data={[
+              {key: 'Work'},
+              {key: 'Cool Club'},
+              {key: 'Volunteering'},
+            ]}
+            renderItem={({item}) => <TouchableOpacity onPress={() => this.navigateToTeam(item.key)}><Text style={styles.item}>{item.key}</Text></TouchableOpacity>}
+            />
+        </ScrollView>
+      </View>
 
-          <View style={styles.navBar}>
-            <Menu style={styles.menu} renderer={renderers.SlideInMenu}>
-              <MenuTrigger>
-               <Icon name='chevron-up' size={38} color="#0c9258"/>
-             </MenuTrigger>
-             <MenuOptions style={styles.options}>
-               <MenuOption style={styles.logoutOption} onSelect={this.handleLogOut} >
-                 <Text style={styles.logout}>Log Out</Text>
-               </MenuOption>
-             </MenuOptions>
-           </Menu>
-          </View>
+        <View style={styles.navBar}>
+          <Menu style={styles.menu} renderer={renderers.SlideInMenu}>
+            <MenuTrigger>
+             <Icon name='chevron-up' size={38} color="white"/>
+           </MenuTrigger>
+           <MenuOptions style={styles.options}>
+             <MenuOption style={styles.logoutOption} onSelect={this.handleLogOut} >
+               <Text style={styles.logout}>Log Out</Text>
+             </MenuOption>
+             <MenuOption onSelect={this.navigateToProfile} >
+               <Text style={styles.profile}>Profile</Text>
+             </MenuOption>
+           </MenuOptions>
+         </Menu>
+        </View>
 
       </View>
     );
@@ -100,15 +113,21 @@ const styles = StyleSheet.create({
     left: 0,
     height: Dimensions.get('window').height*.9,
     alignItems: 'center',
+    width: '100%'
   },
   title: {
     top: Dimensions.get('window').height*.08,
-    color: '#606162',
+    color: '#000053',
     fontSize: 28,
     alignSelf: 'center'
   },
-  top: {
-    flex: 9,
+  topBar: {
+    position: 'absolute',
+    zIndex: 1,
+    height: Dimensions.get('window').height*.15,
+    left: 0,
+    top: 0,
+    width: '100%',
   },
   logout: {
     flex: 1,
@@ -117,12 +136,23 @@ const styles = StyleSheet.create({
     fontSize: 20,
     alignSelf: 'center',
   },
+  profile: {
+    flex: 1,
+    color: '#000053',
+    padding: 20,
+    fontSize: 20,
+    alignSelf: 'center',
+  },
   list: {
     top: Dimensions.get('window').height*.3
   },
+  top: {
+    flex: 9,
+    width: '100%'
+  },
   navBar: {
     flex: 1,
-    backgroundColor: '#2ecc71',
+    backgroundColor: '#000053',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-around',
