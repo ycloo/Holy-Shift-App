@@ -56,3 +56,8 @@ team2 = Team.create!(
 team3 = Team.create!(
   name: 'work'
 )
+
+User.create(name: "YC ",email: "yc.lu95@gmail.com")
+User.create(name: "Jared ",email: "jared.e.tan@gmail.com")
+
+Team.create(name: "Best Team")
