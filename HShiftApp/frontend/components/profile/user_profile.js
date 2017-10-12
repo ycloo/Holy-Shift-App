@@ -12,6 +12,8 @@ import {
 } from 'react-native';
 import Dimensions from 'Dimensions';
 import Header from '../styling/header';
+import ShiftDetailContainer from '../shift/shift_detail_container';
+import TeamIndexContainer from '../team/team_index_container';
 
 class UserProfile extends React.Component {
   constructor(props) {
@@ -25,6 +27,8 @@ class UserProfile extends React.Component {
     this.onBack = this.onBack.bind(this);
     this.resetTabs = this.resetTabs.bind(this);
     this.changeTab = this.changeTab.bind(this);
+    this.navigateToTeam = this.navigateToTeam.bind(this);
+    this.viewShift = this.viewShift.bind(this);
   }
 
   onBack() {
@@ -38,6 +42,25 @@ class UserProfile extends React.Component {
     })
   }
 
+  viewShift(shift) {
+    this.props.receiveShift(shift)
+    this.props.navigator.push({
+        component: ShiftDetailContainer,
+        title: 'Shift Detail',
+        navigationBarHidden: true
+      });
+  }
+
+  navigateToTeam(team) {
+    this.props.receiveTeam(team);
+
+    this.props.navigator.push({
+        component: TeamIndexContainer,
+        title: 'Team Index',
+        navigationBarHidden: true
+      });
+  }
+
   changeTab(tab) {
     this.resetTabs();
     this.setState({
@@ -46,10 +69,53 @@ class UserProfile extends React.Component {
   }
 
   render() {
+    let teamsOrShifts;
+    // if (this.state.teamsTab) {
+    //   teamsOrShifts = this.state.session.currentUser.teams.map(team => {
+    //     return ( <TouchableOpacity>
+    //       <Text>{team.name}</Text>
+    //     </TouchableOpacity>)
+    //   }) } else {
+    //   teamsOrShifts = this.session.currentUser.shifts.map( shift => {
+    //     return ( <TouchableOpacity>
+    //       <Text>{shift.name} {shift.time}</Text>
+    //     </TouchableOpacity>)
+    //   })
+    // }
+
+    if (this.state.teamsTab) {
+      teamsOrShifts =  <ScrollView
+        style={styles.list}
+        automaticallyAdjustContentInsets={false}>
+        <FlatList
+          data={[
+            {key: 'Work'},
+            {key: 'Cool Club'},
+            {key: 'Volunteering'},
+          ]}
+          renderItem={({item}) => <TouchableOpacity onPress={() => this.navigateToTeam(item.key)}><Text style={styles.item}>{item.key}</Text></TouchableOpacity>}
+          />
+      </ScrollView>
+    } else {
+      teamsOrShifts = <ScrollView
+          style={styles.list}
+          automaticallyAdjustContentInsets={false}>
+          <FlatList
+            data={[
+              {key: '10:00am Volunteering'},
+              {key: '10:30am Cool Club'},
+              {key: '11:00am Work'}
+            ]}
+            renderItem={({item}) => <TouchableOpacity onPress={()=>this.viewShift(item.key)}><Text style={styles.item}>{item.key}</Text></TouchableOpacity>}
+          />
+        </ScrollView>
+    }
+
+
 
     return(
       <View style={styles.container}>
-        <Header><Text>Dashboard</Text></Header>
+        <Header><Text>Your Dashboard</Text></Header>
         <View style={styles.tabs}>
           <TouchableOpacity style={ this.state.teamsTab ? styles.tabActive : styles.tab } onPress={()=>this.changeTab('teamsTab')}>
             <Text style={styles.tabText}>Teams</Text>
@@ -59,7 +125,7 @@ class UserProfile extends React.Component {
           </TouchableOpacity>
         </View>
         <Text>{this.props.user.username}</Text>
-        <Text>{this.state.teamsTab ? 'Team' : 'Shift'}</Text>
+        {teamsOrShifts}
         <TouchableOpacity onPress={this.onBack}><Text>Back</Text></TouchableOpacity>
       </View>
     )
@@ -77,6 +143,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     width: '75%',
+    top: Dimensions.get('window').height*.05,
     alignItems: 'center',
   },
   tab: {
@@ -92,7 +159,19 @@ const styles = StyleSheet.create({
   tabText: {
     fontSize: 20,
     color: '#000053'
-  }
+  },
+  list: {
+    top: Dimensions.get('window').height*.3
+  },
+  item: {
+    fontSize: 20,
+    height: 44,
+    textAlign: 'center',
+    backgroundColor: '#dae7e0',
+    margin: 10,
+    padding: 10,
+    borderRadius: 10,
+  },
 
 
 });
