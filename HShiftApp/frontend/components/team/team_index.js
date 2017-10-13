@@ -39,7 +39,7 @@ class TeamIndex extends React.Component {
       <View>
         <View style={styles.topBar}>
           <TouchableOpacity onPress={this.handleBack} style={styles.back}>
-            <Icon name="chevron-left" size={30} color='#12512d'/>
+            <Icon name="chevron-left" size={30} color='#000053'/>
           </TouchableOpacity>
           <Text style={styles.greeting}>{this.props.teams.currentTeam}!</Text>
         </View>

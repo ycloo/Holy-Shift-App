@@ -13,6 +13,7 @@ import {
 import Dimensions from 'Dimensions';
 import Header from '../styling/header';
 import ShiftDetailContainer from '../shift/shift_detail_container';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import TeamIndexContainer from '../team/team_index_container';
 
 class UserProfile extends React.Component {
@@ -24,14 +25,14 @@ class UserProfile extends React.Component {
       shiftsTab: false
     }
 
-    this.onBack = this.onBack.bind(this);
+    this.handleBack = this.handleBack.bind(this);
     this.resetTabs = this.resetTabs.bind(this);
     this.changeTab = this.changeTab.bind(this);
     this.navigateToTeam = this.navigateToTeam.bind(this);
     this.viewShift = this.viewShift.bind(this);
   }
 
-  onBack() {
+  handleBack() {
     this.props.navigator.pop();
   }
 
@@ -115,7 +116,12 @@ class UserProfile extends React.Component {
 
     return(
       <View style={styles.container}>
-        <Header><Text>Your Dashboard</Text></Header>
+        <View style={styles.topBar}>
+          <TouchableOpacity onPress={this.handleBack} style={styles.back}>
+            <Icon name="chevron-left" size={30} color='#000053'/>
+          </TouchableOpacity>
+          <Header><Text>Your Dashboard</Text></Header>
+        </View>
         <View style={styles.tabs}>
           <TouchableOpacity style={ this.state.teamsTab ? styles.tabActive : styles.tab } onPress={()=>this.changeTab('teamsTab')}>
             <Text style={styles.tabText}>Teams</Text>
@@ -126,7 +132,6 @@ class UserProfile extends React.Component {
         </View>
         <Text>{this.props.user.username}</Text>
         {teamsOrShifts}
-        <TouchableOpacity onPress={this.onBack}><Text>Back</Text></TouchableOpacity>
       </View>
     )
   }
@@ -137,13 +142,28 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    top: Dimensions.get('window').height*.10,
+  },
+  topBar: {
+    position: 'absolute',
+    zIndex: 1,
+    height: Dimensions.get('window').height*.15,
+    left: 0,
+    top: 0,
+    width: '100%',
+  },
+  back:{
+    padding: 5,
+    width: '10%',
+    alignItems: 'center',
+    top: Dimensions.get('window').height*.05,
+    left: 0,
+    zIndex: 1
   },
   tabs: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     width: '75%',
-    top: Dimensions.get('window').height*.05,
+    top: Dimensions.get('window').height*.20,
     alignItems: 'center',
   },
   tab: {

@@ -11,7 +11,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   receiveShift: shift => dispatch(receiveShift(shift)),
   receiveTeam: team => dispatch(receiveTeam(team))
-
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserProfile);
