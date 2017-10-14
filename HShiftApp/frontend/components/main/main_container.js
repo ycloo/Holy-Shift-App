@@ -4,7 +4,6 @@ import {logoutUser} from '../../actions/session_actions';
 import Main from './main';
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     teams: state.teams,
     shifts: state.shifts,

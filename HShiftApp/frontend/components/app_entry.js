@@ -49,7 +49,6 @@ const styles = StyleSheet.create({
 
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     currentUser: state.session.currentUser
   };
