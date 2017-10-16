@@ -117,9 +117,6 @@ class UserProfile extends React.Component {
     return(
       <View style={styles.container}>
         <View style={styles.topBar}>
-          <TouchableOpacity onPress={this.handleBack} style={styles.back}>
-            <Icon name="chevron-left" size={30} color='#000053'/>
-          </TouchableOpacity>
           <Header><Text>Your Dashboard</Text></Header>
         </View>
         <View style={styles.tabs}>

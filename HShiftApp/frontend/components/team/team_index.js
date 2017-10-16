@@ -16,9 +16,12 @@ class TeamIndex extends React.Component {
   constructor(props) {
     super(props);
 
-
     this.handleBack = this.handleBack.bind(this);
   }
+
+  static navigationOptions = ({navigation}) => ({
+    title: navigation.state.params.team
+  });
 
   handleBack() {
     this.props.navigator.pop();
@@ -26,23 +29,14 @@ class TeamIndex extends React.Component {
 
   viewShift(shift) {
     this.props.receiveShift(shift)
-    this.props.navigator.push({
-        component: ShiftDetailContainer,
-        title: 'Shift Detail',
-        navigationBarHidden: true
-      });
+    const { navigate } = this.props.navigation;
+    navigate('Shift', {shift})
   }
 
   render() {
     return (
 
       <View>
-        <View style={styles.topBar}>
-          <TouchableOpacity onPress={this.handleBack} style={styles.back}>
-            <Icon name="chevron-left" size={30} color='#000053'/>
-          </TouchableOpacity>
-          <Text style={styles.greeting}>{this.props.teams.currentTeam}!</Text>
-        </View>
 
         <ScrollView
             style={styles.list}

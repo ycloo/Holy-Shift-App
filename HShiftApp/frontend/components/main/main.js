@@ -32,26 +32,24 @@ class Main extends React.Component {
     this.handleLogOut = this.handleLogOut.bind(this);
   }
 
+  static navigationOptions = {
+    title: 'Main',
+  };
+
+
   componentDidMount() {
     // this.props.dispatch(getTeam(this.props.organization));
   }
 
   navigateToTeam(team) {
     this.props.receiveTeam(team);
-
-    this.props.navigator.push({
-        component: TeamIndexContainer,
-        title: 'Team Index',
-        navigationBarHidden: true
-      });
+    const { navigate } = this.props.navigation;
+    navigate('Team', {team})
   }
 
   navigateToProfile() {
-    this.props.navigator.push({
-        component: UserProfileContainer,
-        title: 'User Profile',
-        navigationBarHidden: true
-      });
+    const { navigate } = this.props.navigation;
+    navigate('Profile', {name: 'Profile'})
   }
 
   handleLogOut() {
