@@ -23,17 +23,12 @@ class UserProfile extends React.Component {
     this.state = {
       teamsTab: true,
       shiftsTab: false
-    }
+    };
 
-    this.handleBack = this.handleBack.bind(this);
     this.resetTabs = this.resetTabs.bind(this);
     this.changeTab = this.changeTab.bind(this);
     this.navigateToTeam = this.navigateToTeam.bind(this);
     this.viewShift = this.viewShift.bind(this);
-  }
-
-  handleBack() {
-    this.props.navigator.pop();
   }
 
   resetTabs() {
@@ -45,21 +40,14 @@ class UserProfile extends React.Component {
 
   viewShift(shift) {
     this.props.receiveShift(shift)
-    this.props.navigator.push({
-        component: ShiftDetailContainer,
-        title: 'Shift Detail',
-        navigationBarHidden: true
-      });
+    const { navigate } = this.props.navigation;
+    navigate('Shift', {shift})
   }
 
   navigateToTeam(team) {
     this.props.receiveTeam(team);
-
-    this.props.navigator.push({
-        component: TeamIndexContainer,
-        title: 'Team Index',
-        navigationBarHidden: true
-      });
+    const { navigate } = this.props.navigation;
+    navigate('Team', {team})
   }
 
   changeTab(tab) {
@@ -113,8 +101,7 @@ class UserProfile extends React.Component {
     }
 
 
-
-    return(
+    return (
       <View style={styles.container}>
         <View style={styles.topBar}>
           <Header><Text>Your Dashboard</Text></Header>
@@ -145,7 +132,7 @@ const styles = StyleSheet.create({
     zIndex: 1,
     height: Dimensions.get('window').height*.15,
     left: 0,
-    top: 0,
+    top: Dimensions.get('window').height*.05,
     width: '100%',
   },
   back:{
@@ -189,8 +176,6 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 10,
   },
-
-
 });
 
 export default UserProfile;

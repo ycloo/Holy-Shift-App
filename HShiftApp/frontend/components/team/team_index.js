@@ -16,7 +16,6 @@ class TeamIndex extends React.Component {
   constructor(props) {
     super(props);
 
-    this.handleBack = this.handleBack.bind(this);
   }
 
   static navigationOptions = ({navigation}) => ({
@@ -30,14 +29,12 @@ class TeamIndex extends React.Component {
   viewShift(shift) {
     this.props.receiveShift(shift)
     const { navigate } = this.props.navigation;
-    navigate('Shift', {shift})
+    navigate('Menu')
   }
 
   render() {
     return (
-
       <View>
-
         <ScrollView
             style={styles.list}
             automaticallyAdjustContentInsets={false}>
@@ -50,7 +47,6 @@ class TeamIndex extends React.Component {
               renderItem={({item}) => <TouchableOpacity onPress={()=>this.viewShift(item.key)}><Text style={styles.item}>{item.key}</Text></TouchableOpacity>}
             />
           </ScrollView>
-
       </View>
 
     )

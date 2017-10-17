@@ -16,11 +16,6 @@ class ShiftDetail extends React.Component {
   constructor(props) {
     super(props);
 
-    this.handleBack = this.handleBack.bind(this);
-  }
-
-  handleBack() {
-    this.props.navigator.pop();
   }
 
   render() {
