@@ -5,12 +5,13 @@ import { RECEIVE_ALL_SHIFTS, RECEIVE_SINGLE_SHIFT } from '../actions/shift_actio
 const defaultShifts = {
   entities: {},
   currentShift: null
-}
+};
+
 const shiftsReducer = (state=defaultShifts, action) => {
   Object.freeze(state);
   switch(action.type) {
     case RECEIVE_ALL_SHIFTS:
-      return merge({}, state, {entities: action.shifts})
+      return merge({}, state, {entities: action.shifts});
     case RECEIVE_SINGLE_SHIFT:
       const shift = action.shift;
       let newState = merge({}, state);
@@ -26,6 +27,6 @@ const shiftsReducer = (state=defaultShifts, action) => {
     default:
       return state;
   }
-}
+};
 
 export default shiftsReducer;

@@ -16,27 +16,15 @@ class ShiftDetail extends React.Component {
   constructor(props) {
     super(props);
 
-    this.handleBack = this.handleBack.bind(this);
   }
-
-  handleBack() {
-    this.props.navigator.pop();
-  }
-
 
   render() {
     return(
       <View>
         <View style={styles.topBar}>
-          <TouchableOpacity onPress={this.handleBack} style={styles.back}>
-            <Icon name="chevron-left" size={30} color='#12512d'/>
-          </TouchableOpacity>
-          <Text style={styles.greeting}>{this.props.teams.currentTeam}!</Text>
-            <Text style={styles.greeting}>{this.props.shifts.currentShift} Shift</Text>
+          <Text style={styles.greeting}>{this.props.shifts.currentShift} Shift</Text>
         </View>
-
       </View>
-
     )
   }
 }

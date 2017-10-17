@@ -4,7 +4,6 @@ import { RECEIVE_CURRENT_USER, RECEIVE_ERRORS, RESET_ERRORS, LOGOUT_USER } from 
 
 const nullUser = Object.freeze({
   currentUser: null,
-  errors: []
 });
 
 const noErrors = Object.freeze({
@@ -12,7 +11,7 @@ const noErrors = Object.freeze({
 });
 
 const sessionReducer = (state = nullUser, action) => {
-  Object.freeze(state)
+  Object.freeze(state);
   switch(action.type) {
     case RECEIVE_CURRENT_USER:
       const currentUser = action.currentUser;

@@ -1,5 +1,9 @@
 {
   "name": "holyShift",
   "private": true,
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^4.8.0",
+    "eslint-config-google": "^0.9.1"
+  }
 }

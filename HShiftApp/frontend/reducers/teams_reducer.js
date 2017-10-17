@@ -5,12 +5,13 @@ import { RECEIVE_ALL_TEAMS, RECEIVE_SINGLE_TEAM, RESET_TEAM, REMOVE_TEAM } from 
 const defaultTeam = {
   entities: {},
   currentTeam: null
-}
+};
+
 const teamsReducer = (state=defaultTeam, action) => {
   Object.freeze(state);
   switch(action.type) {
     case RECEIVE_ALL_TEAMS:
-      return merge({}, state, {entities: action.teams})
+      return merge({}, state, {entities: action.teams});
     case RECEIVE_SINGLE_TEAM:
       const team = action.team;
       let newState = merge({}, state);
@@ -26,6 +27,6 @@ const teamsReducer = (state=defaultTeam, action) => {
     default:
       return state;
   }
-}
+};
 
 export default teamsReducer;

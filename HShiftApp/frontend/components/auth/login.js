@@ -10,7 +10,7 @@ import {
 import Dimensions from 'Dimensions';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { connect } from 'react-redux';
-import {receiveCurrentUser} from '../../actions/session_actions';
+import {receiveCurrentUser, login} from '../../actions/session_actions';
 
 class Login extends React.Component {
   constructor(props) {
@@ -27,7 +27,9 @@ class Login extends React.Component {
   onSignIn() {
     console.log(this.props.state);
 
+    // this.props.login(this.state);
     this.props.receiveCurrentUser('123');
+
   }
 
   render() {
@@ -99,13 +101,12 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   textInput: {
-    height: 26,
+    height: 50,
     color: '#000053',
     textAlign: 'center',
     width: '100%'
   },
   buttonContainer: {
-    borderRadius: 20,
     padding: 20,
     width: '75%',
     alignSelf: 'center',
@@ -130,7 +131,8 @@ const mapStateToProps = state => ({
   state
 });
 const mapDispatchToProps = dispatch => ({
-  receiveCurrentUser: (id) => dispatch(receiveCurrentUser(id))
+  receiveCurrentUser: (id) => dispatch(receiveCurrentUser(id)),
+  login: user => dispatch(login(user))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
