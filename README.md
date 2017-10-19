@@ -1,2 +1,2 @@
 # Holy-Shift-Server
-https://boiling-ridge-18078.herokuapp.com/
+https://intense-peak-67011.herokuapp.com/ 
