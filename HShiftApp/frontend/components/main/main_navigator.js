@@ -13,20 +13,28 @@ import UserProfileContainer from '../profile/user_profile_container';
 import CalendarScreen from '../calendar/calendars';
 import MenuScreen from '../calendar/menu';
 import AgendaScreenContainer from '../calendar/agenda_container';
+import ProfileDrawerNavigator from '../profile/profile_drawer_navigator';
 import { MenuContext } from 'react-native-popup-menu';
 import {
   StackNavigator,
 } from 'react-navigation';
+import {
+  Platform
+} from 'react-native';
 
 const BasicApp = StackNavigator({
   Agenda: {screen: AgendaScreenContainer},
   Main: {screen: MainContainer},
   Team: {screen: TeamIndexContainer},
   Shift: {screen: ShiftDetailContainer},
-  Profile: {screen: UserProfileContainer},
+  Profile: {screen: ProfileDrawerNavigator},
   Calendar: {screen: CalendarScreen},
-  Menu: {screen: MenuScreen}
-});
+  Menu: {screen: MenuScreen},
+},
+  {
+    initialRouteName: 'Agenda',
+    mode: Platform.OS === 'ios' ? 'modal' : 'card',
+  });
 
 
 class MainNavigator extends React.Component {
