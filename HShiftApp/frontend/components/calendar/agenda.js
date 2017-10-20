@@ -113,7 +113,7 @@ class AgendaScreen extends Component {
           <Agenda
             items={this.state.items}
             loadItemsForMonth={this.loadItems.bind(this)}
-            selected={'2017-05-16'}
+            selected={new Date().toISOString().slice(0,10)}
             renderItem={this.renderItem.bind(this)}
             renderEmptyDate={this.renderEmptyDate.bind(this)}
             rowHasChanged={this.rowHasChanged.bind(this)}
