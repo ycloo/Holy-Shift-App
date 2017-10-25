@@ -18,6 +18,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import TeamIndexContainer from '../team/team_index_container';
 import {Agenda} from 'react-native-calendars';
 import { DrawerNavigator } from 'react-navigation';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 
 class UserProfile extends React.Component {
@@ -181,13 +182,19 @@ class UserProfile extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.topBar}>
-          <Header><Text>Your Dashboard</Text></Header>
+          <View style={styles.header}>
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate('DrawerOpen')}
+              >
+              <MaterialIcons name="list" size={40} style={{ color: '#000053' }} />
+            </TouchableOpacity>
+
+              <Text style={{fontSize: 24}}>Your Dashboard</Text>
+
+          </View>
+
         </View>
 
-          <Button
-         onPress={() => this.props.navigation.navigate('DrawerOpen')}
-         title="Open drawer"
-       />
         <View style={styles.tabs}>
           <TouchableOpacity style={ this.state.teamsTab ? styles.tabActive : styles.tab } onPress={()=>this.changeTab('teamsTab')}>
             <Text style={styles.tabText}>Teams</Text>
@@ -208,6 +215,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
+  },
+  header: {
+    flex: 1,
+    flexDirection: 'row',
+    alignSelf: 'center',
+    alignItems: 'center'
   },
   topBar: {
     zIndex: 0,
