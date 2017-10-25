@@ -18,6 +18,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import TeamIndexContainer from '../team/team_index_container';
 import {Agenda} from 'react-native-calendars';
 import { DrawerNavigator } from 'react-navigation';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 
 class UserProfile extends React.Component {
@@ -184,10 +185,11 @@ class UserProfile extends React.Component {
           <Header><Text>Your Dashboard</Text></Header>
         </View>
 
-          <Button
+          <TouchableOpacity
          onPress={() => this.props.navigation.navigate('DrawerOpen')}
-         title="Open drawer"
-       />
+       >
+       <MaterialIcons name="list" size={40} style={{ color: '#000053' }} />
+       </TouchableOpacity>
         <View style={styles.tabs}>
           <TouchableOpacity style={ this.state.teamsTab ? styles.tabActive : styles.tab } onPress={()=>this.changeTab('teamsTab')}>
             <Text style={styles.tabText}>Teams</Text>
