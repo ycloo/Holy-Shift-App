@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="Rails holyShift: test">
+  <database-model serializer="dbm" rdbms="POSTGRES" format-version="4.4">
+    <root id="1"/>
+    <database id="2" parent="1" name="holyShift_test">
+      <ObjectId>16459</ObjectId>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </database>
+    <database id="3" parent="1" name="postgres">
+      <ObjectId>12669</ObjectId>
+    </database>
+    <database id="4" parent="1" name="yclu">
+      <ObjectId>16384</ObjectId>
+    </database>
+    <database id="5" parent="1" name="holyShift_development">
+      <ObjectId>16385</ObjectId>
+    </database>
+    <schema id="6" parent="2" name="public">
+      <ObjectId>2200</ObjectId>
+      <IntrospectionTimestamp>2017-10-25.16:52:08.190</IntrospectionTimestamp>
+      <IntrospectionStateNumber>926</IntrospectionStateNumber>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="7" parent="2" name="pg_catalog">
+      <ObjectId>11</ObjectId>
+    </schema>
+    <schema id="8" parent="2" name="pg_toast">
+      <ObjectId>99</ObjectId>
+    </schema>
+    <schema id="9" parent="2" name="pg_temp_1">
+      <ObjectId>11848</ObjectId>
+    </schema>
+    <schema id="10" parent="2" name="pg_toast_temp_1">
+      <ObjectId>11849</ObjectId>
+    </schema>
+    <schema id="11" parent="2" name="information_schema">
+      <ObjectId>12381</ObjectId>
+    </schema>
+    <sequence id="12" parent="6" name="shifts_id_seq">
+      <ObjectId>16588</ObjectId>
+      <StateNumber>914</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
+    </sequence>
+    <sequence id="13" parent="6" name="shifts_users_id_seq">
+      <ObjectId>16599</ObjectId>
+      <StateNumber>916</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
+    </sequence>
+    <sequence id="14" parent="6" name="teams_id_seq">
+      <ObjectId>16609</ObjectId>
+      <StateNumber>920</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
+    </sequence>
+    <sequence id="15" parent="6" name="users_id_seq">
+      <ObjectId>16623</ObjectId>
+      <StateNumber>924</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
+    </sequence>
+    <table id="16" parent="6" name="ar_internal_metadata">
+      <ObjectId>16524</ObjectId>
+      <StateNumber>891</StateNumber>
+    </table>
+    <table id="17" parent="6" name="schema_migrations">
+      <ObjectId>16516</ObjectId>
+      <StateNumber>888</StateNumber>
+    </table>
+    <table id="18" parent="6" name="shifts">
+      <ObjectId>16590</ObjectId>
+      <StateNumber>925</StateNumber>
+    </table>
+    <table id="19" parent="6" name="shifts_users">
+      <ObjectId>16601</ObjectId>
+      <StateNumber>926</StateNumber>
+    </table>
+    <table id="20" parent="6" name="teams">
+      <ObjectId>16611</ObjectId>
+      <StateNumber>920</StateNumber>
+    </table>
+    <table id="21" parent="6" name="teams_users">
+      <ObjectId>16620</ObjectId>
+      <StateNumber>922</StateNumber>
+    </table>
+    <table id="22" parent="6" name="users">
+      <ObjectId>16625</ObjectId>
+      <StateNumber>926</StateNumber>
+    </table>
+    <column id="23" parent="16" name="key">
+      <Position>1</Position>
+      <DataType>varchar|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>891</StateNumber>
+    </column>
+    <column id="24" parent="16" name="value">
+      <Position>2</Position>
+      <DataType>varchar|0</DataType>
+      <StateNumber>891</StateNumber>
+    </column>
+    <column id="25" parent="16" name="created_at">
+      <Position>3</Position>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>891</StateNumber>
+    </column>
+    <column id="26" parent="16" name="updated_at">
+      <Position>4</Position>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>891</StateNumber>
+    </column>
+    <index id="27" parent="16" name="ar_internal_metadata_pkey">
+      <ObjectId>16530</ObjectId>
+      <ColNames>key</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="28" parent="16" name="ar_internal_metadata_pkey">
+      <ObjectId>16531</ObjectId>
+      <ColNames>key</ColNames>
+      <UnderlyingIndexName>ar_internal_metadata_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="29" parent="17" name="version">
+      <Position>1</Position>
+      <DataType>varchar|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>888</StateNumber>
+    </column>
+    <index id="30" parent="17" name="schema_migrations_pkey">
+      <ObjectId>16522</ObjectId>
+      <ColNames>version</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="31" parent="17" name="schema_migrations_pkey">
+      <ObjectId>16523</ObjectId>
+      <ColNames>version</ColNames>
+      <UnderlyingIndexName>schema_migrations_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="32" parent="18" name="id">
+      <Position>1</Position>
+      <DataType>bigint|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>914</StateNumber>
+      <SequenceName>shifts_id_seq</SequenceName>
+      <DefaultExpression>nextval(&apos;shifts_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="33" parent="18" name="start_time">
+      <Position>2</Position>
+      <DataType>varchar|0</DataType>
+      <StateNumber>914</StateNumber>
+    </column>
+    <column id="34" parent="18" name="end_time">
+      <Position>3</Position>
+      <DataType>varchar|0</DataType>
+      <StateNumber>914</StateNumber>
+    </column>
+    <column id="35" parent="18" name="created_at">
+      <Position>4</Position>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>914</StateNumber>
+    </column>
+    <column id="36" parent="18" name="updated_at">
+      <Position>5</Position>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>914</StateNumber>
+    </column>
+    <index id="37" parent="18" name="shifts_pkey">
+      <ObjectId>16597</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="38" parent="18" name="shifts_pkey">
+      <ObjectId>16598</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>shifts_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="39" parent="19" name="id">
+      <Position>1</Position>
+      <DataType>bigint|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>916</StateNumber>
+      <SequenceName>shifts_users_id_seq</SequenceName>
+      <DefaultExpression>nextval(&apos;shifts_users_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="40" parent="19" name="user_id">
+      <Position>2</Position>
+      <DataType>bigint|0</DataType>
+      <StateNumber>916</StateNumber>
+    </column>
+    <column id="41" parent="19" name="shift_id">
+      <Position>3</Position>
+      <DataType>bigint|0</DataType>
+      <StateNumber>916</StateNumber>
+    </column>
+    <index id="42" parent="19" name="shifts_users_pkey">
+      <ObjectId>16605</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="43" parent="19" name="index_shifts_users_on_user_id">
+      <ObjectId>16608</ObjectId>
+      <ColNames>user_id</ColNames>
+    </index>
+    <index id="44" parent="19" name="index_shifts_users_on_shift_id">
+      <ObjectId>16607</ObjectId>
+      <ColNames>shift_id</ColNames>
+    </index>
+    <key id="45" parent="19" name="shifts_users_pkey">
+      <ObjectId>16606</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>shifts_users_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="46" parent="19" name="fk_rails_f3f9329919">
+      <ObjectId>16639</ObjectId>
+      <ColNames>user_id</ColNames>
+      <RefTableId>16625</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>users</RefTableName>
+      <RefKeyName>users_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="47" parent="19" name="fk_rails_87a919537f">
+      <ObjectId>16634</ObjectId>
+      <ColNames>shift_id</ColNames>
+      <RefTableId>16590</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>shifts</RefTableName>
+      <RefKeyName>shifts_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="48" parent="20" name="id">
+      <Position>1</Position>
+      <DataType>bigint|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>920</StateNumber>
+      <SequenceName>teams_id_seq</SequenceName>
+      <DefaultExpression>nextval(&apos;teams_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="49" parent="20" name="name">
+      <Position>2</Position>
+      <DataType>varchar|0</DataType>
+      <StateNumber>920</StateNumber>
+    </column>
+    <column id="50" parent="20" name="created_at">
+      <Position>3</Position>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>920</StateNumber>
+    </column>
+    <column id="51" parent="20" name="updated_at">
+      <Position>4</Position>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>920</StateNumber>
+    </column>
+    <index id="52" parent="20" name="teams_pkey">
+      <ObjectId>16618</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="53" parent="20" name="teams_pkey">
+      <ObjectId>16619</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>teams_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="54" parent="21" name="user_id">
+      <Position>1</Position>
+      <DataType>bigint|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>922</StateNumber>
+    </column>
+    <column id="55" parent="21" name="team_id">
+      <Position>2</Position>
+      <DataType>bigint|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>922</StateNumber>
+    </column>
+    <column id="56" parent="22" name="id">
+      <Position>1</Position>
+      <DataType>bigint|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>924</StateNumber>
+      <SequenceName>users_id_seq</SequenceName>
+      <DefaultExpression>nextval(&apos;users_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="57" parent="22" name="name">
+      <Position>2</Position>
+      <DataType>varchar|0</DataType>
+      <StateNumber>924</StateNumber>
+    </column>
+    <column id="58" parent="22" name="email">
+      <Position>3</Position>
+      <DataType>varchar|0</DataType>
+      <StateNumber>924</StateNumber>
+    </column>
+    <column id="59" parent="22" name="created_at">
+      <Position>4</Position>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>924</StateNumber>
+    </column>
+    <column id="60" parent="22" name="updated_at">
+      <Position>5</Position>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>924</StateNumber>
+    </column>
+    <column id="61" parent="22" name="password_digest">
+      <Position>6</Position>
+      <DataType>varchar|0</DataType>
+      <StateNumber>924</StateNumber>
+    </column>
+    <index id="62" parent="22" name="users_pkey">
+      <ObjectId>16632</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="63" parent="22" name="users_pkey">
+      <ObjectId>16633</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>users_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>

@@ -1,0 +1,28 @@
+<div class = "row">
+  <div class="col-md-6">
+    <h2>
+      {{ member.firstName }} {{ member.lastName }}
+    </h2>
+  </div>
+  <div class="col-md-3">
+  </div>
+  <div class="col-md-2">
+    <a href="#/"><button style="margin-top:20px" class="btn btn-default" ng-click="deleteMember(member._id)">Delete</button></a>
+  </div>
+  <div class="col-md-1">
+  </div>
+</div>
+<div ng-hide="editMode" class="container">
+  <div>
+    <p ng-if="member.email">email: <a ng-href="mailto:{{ member.email }}" target="_blank">{{ member.email }}</a></p>
+    <p ng-if="member.memberId">member Id (m): {{ member.memberId }} </p>
+    <p ng-if="member.rate"> rate: {{ member.rate }} </p>
+    <p>
+      <button style="margin-top:20px" class="btn btn-default" ng-click="toggleEdit()">Edit</button>
+      <a style="margin-top:20px" class="btn btn-default" href="#/">Back</a>
+    </p>
+  </div>
+</div>
+<!-- Contact form -->
+<div ng-include="memberFormUrl">
+</div>

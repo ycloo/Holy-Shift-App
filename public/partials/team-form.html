@@ -1,0 +1,21 @@
+<div class="row" ng-hide="team._id">
+  <div class="col-md-6">
+      <h2>Create new Team</h2>
+  </div>
+</div>
+<div class="container">
+  <div>
+    <p>
+      <label>Name (required)</label> 
+      <input id="name" class="form-control" type="text" ng-model="team.name" required> 
+    </p>
+    <p>
+      <label>Slogan (required)</label> 
+      <input id="name" class="form-control" type="text" ng-model="team.slogan" required> 
+    </p>
+    <p>
+      <button style="margin-top:20px" class="btn btn-default" ng-click="saveTeam(team)">Save</button>
+      <button style="margin-top:20px" class="btn btn-default" ng-click="back()">Back</button>
+    </p>
+  </div>
+</div>
