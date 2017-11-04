@@ -2,22 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e37829a8-63a6-4833-afe4-6467f502bc0a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/users/show.json.jbuilder" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/db/migrate/20171011180342_create_join_table_users_teams.rb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/model/db.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/model/member.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/model/team.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/5e4e848b-02fc-4278-8b4d-9bb2fb0baaf2/_metadata_/metadata" afterPath="$PROJECT_DIR$/.idea/dataSources/5e4e848b-02fc-4278-8b4d-9bb2fb0baaf2/_metadata_/metadata" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/5e4e848b-02fc-4278-8b4d-9bb2fb0baaf2/_metadata_/metadata.len" afterPath="$PROJECT_DIR$/.idea/dataSources/5e4e848b-02fc-4278-8b4d-9bb2fb0baaf2/_metadata_/metadata.len" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/8357565f-443e-4f17-934f-1bb60315689a/_metadata_/metadata" afterPath="$PROJECT_DIR$/.idea/dataSources/8357565f-443e-4f17-934f-1bb60315689a/_metadata_/metadata" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/8357565f-443e-4f17-934f-1bb60315689a/_metadata_/metadata.len" afterPath="$PROJECT_DIR$/.idea/dataSources/8357565f-443e-4f17-934f-1bb60315689a/_metadata_/metadata.len" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/team.rb" afterPath="$PROJECT_DIR$/app/models/team.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/user.rb" afterPath="$PROJECT_DIR$/app/models/user.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/schema.rb" afterPath="$PROJECT_DIR$/db/schema.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/seeds.rb" afterPath="$PROJECT_DIR$/db/seeds.rb" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -110,16 +96,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="show.json.jbuilder" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/users/show.json.jbuilder">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="seeds.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/db/seeds.rb">
           <provider selected="true" editor-type-id="text-editor">
@@ -180,11 +156,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="users_controller.rb" pinned="false" current-in-tab="true">
+      <file leaf-file-name="users_controller.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="120">
               <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -352,6 +338,7 @@
         <option value="$PROJECT_DIR$/app/models/team.rb" />
         <option value="$PROJECT_DIR$/db/seeds.rb" />
         <option value="$PROJECT_DIR$/app/controllers/users_controller.rb" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -553,12 +540,12 @@
       <workItem from="1508975455490" duration="25000" />
       <workItem from="1508975516254" duration="1032000" />
       <workItem from="1509828387077" duration="404000" />
-      <workItem from="1509829977266" duration="2747000" />
+      <workItem from="1509829977266" duration="2960000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30589000" />
+    <option name="totallyTimeSpent" value="30802000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="939" extended-state="6" />
@@ -607,13 +594,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -965,6 +945,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
           <folding />
         </state>
       </provider>
