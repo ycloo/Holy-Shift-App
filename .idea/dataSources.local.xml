@@ -3,20 +3,13 @@
   <component name="dataSourceStorageLocal">
     <data-source name="Rails holyShift: production" uuid="718cdd84-1e4d-45e1-9971-aa6585aa090e">
       <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
-      <user-name>yclu</user-name>
     </data-source>
     <data-source name="Rails holyShift: development" uuid="5e4e848b-02fc-4278-8b4d-9bb2fb0baaf2">
-      <database-info product="PostgreSQL" version="9.6.5" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.1.1">
-        <identifier-quote-string>&quot;</identifier-quote-string>
-      </database-info>
-      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
       <introspection-schemas>holyShift_development:public</introspection-schemas>
     </data-source>
     <data-source name="Rails holyShift: test" uuid="8357565f-443e-4f17-934f-1bb60315689a">
-      <database-info product="PostgreSQL" version="9.6.5" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.1.1">
-        <identifier-quote-string>&quot;</identifier-quote-string>
-      </database-info>
-      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
       <introspection-schemas>holyShift_test:public</introspection-schemas>
     </data-source>
   </component>

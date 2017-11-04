@@ -46,14 +46,20 @@ shift3 = user3.shifts.create!(
 Team.delete_all
 
 team1 = Team.create!(
-  name: 'cool club'
+  name: 'cool club',
+  users:[user1,user2]
+
 )
 
 team2 = Team.create!(
-  name: 'volunteering'
+  name: 'volunteering',
+  users:[user1,user3]
+
 )
 
 team3 = Team.create!(
-  name: 'work'
+  name: 'work',
+  users:[user1,user3]
+
 )
 

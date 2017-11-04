@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-  has_and_belongs_to_many :team,optional:true
+  has_many :memberships
+  has_many :teams, through: :memberships
   has_many :shifts
   before_save { email.downcase! }
   validates :name, presence: true, length: { maximum: 50 }

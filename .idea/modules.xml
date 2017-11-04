@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/HS.iml" filepath="$PROJECT_DIR$/.idea/modules/HS.iml" />
       <module fileurl="file://$PROJECT_DIR$/holyShift.iml" filepath="$PROJECT_DIR$/holyShift.iml" />
     </modules>
   </component>
