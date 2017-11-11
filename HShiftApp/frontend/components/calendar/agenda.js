@@ -22,27 +22,18 @@ class AgendaScreen extends Component {
     this.state = {
       items: {}
     };
-
-    this.navigateToProfile = this.navigateToProfile.bind(this);
-    this.handleLogOut = this.handleLogOut.bind(this);
-    this.navigateToCalendar = this.navigateToCalendar.bind(this);
   }
 
   static navigationOptions = {
     title: 'Agenda',
   };
 
-
-  navigateToProfile() {
+  navigateTo = (item) => {
     const { navigate } = this.props.navigation;
-    navigate('Profile', {name: 'Profile'})
-  }
-  navigateToCalendar() {
-    const { navigate } = this.props.navigation;
-    navigate('Calendar')
+    navigate(item);
   }
 
-  handleLogOut() {
+  handleLogOut = () => {
     this.props.logoutUser();
   }
 
@@ -62,14 +53,12 @@ class AgendaScreen extends Component {
           }
         }
       }
-      //console.log(this.state.items);
       const newItems = {};
       Object.keys(this.state.items).forEach(key => {newItems[key] = this.state.items[key];});
       this.setState({
         items: newItems
       });
     }, 1000);
-    // console.log(`Load Items for ${day.year}-${day.month}`);
   }
 
   renderItem(item) {
@@ -92,6 +81,7 @@ class AgendaScreen extends Component {
     const date = new Date(time);
     return date.toISOString().split('T')[0];
   }
+
   //markedDates={{
   //  '2017-05-08': [{textColor: '#666'}],
   //  '2017-05-09': [{textColor: '#666'}],
@@ -129,10 +119,10 @@ class AgendaScreen extends Component {
              <MenuOption style={styles.logoutOption} onSelect={this.handleLogOut} >
                <Text style={styles.logout}>Log Out</Text>
              </MenuOption>
-             <MenuOption onSelect={this.navigateToProfile} >
+             <MenuOption onSelect={() => this.navigateTo('Profile')} >
                <Text style={styles.profile}>Profile</Text>
              </MenuOption>
-             <MenuOption onSelect={this.navigateToCalendar} >
+             <MenuOption onSelect={() => this.navigateTo('Calendar')} >
                <Text style={styles.profile}>Calendar</Text>
              </MenuOption>
            </MenuOptions>

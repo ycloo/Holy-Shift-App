@@ -20,7 +20,6 @@ import {Agenda} from 'react-native-calendars';
 import { DrawerNavigator } from 'react-navigation';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-
 class UserProfile extends React.Component {
   constructor(props) {
     super(props);
@@ -30,14 +29,9 @@ class UserProfile extends React.Component {
       shiftsTab: false,
       items: {}
     };
-
-    this.resetTabs = this.resetTabs.bind(this);
-    this.changeTab = this.changeTab.bind(this);
-    this.navigateToTeam = this.navigateToTeam.bind(this);
-    this.viewShift = this.viewShift.bind(this);
   }
 
-  resetTabs() {
+  resetTabs = () => {
     this.setState({
       teamsTab: false,
       shiftsTab: false
@@ -104,19 +98,19 @@ class UserProfile extends React.Component {
     return date.toISOString().split('T')[0];
   }
 
-  viewShift(shift) {
+  viewShift = (shift) => {
     this.props.receiveShift(shift)
     const { navigate } = this.props.navigation;
     navigate('Shift', {shift})
   }
 
-  navigateToTeam(team) {
+  navigateToTeam = (team) => {
     this.props.receiveTeam(team);
     const { navigate } = this.props.navigation;
     navigate('Team', {team})
   }
 
-  changeTab(tab) {
+  changeTab = (tab) => {
     this.resetTabs();
     this.setState({
       [tab]: true
@@ -181,34 +175,31 @@ class UserProfile extends React.Component {
 
     return (
       <View style={styles.container}>
-        <View style={styles.topBar}>
-          <View style={styles.header}>
-            <TouchableOpacity
-              onPress={() => this.props.navigation.navigate('DrawerOpen')}
-              >
-              <MaterialIcons name="list" size={40} style={{ color: '#000053' }} />
+        <View style={styles.header}>
+          <TouchableOpacity
+            onPress={() => this.props.navigation.navigate('DrawerOpen')}
+            >
+            <MaterialIcons name="list" size={40} style={{ color: '#000053' }} />
+          </TouchableOpacity>
+          <Text style={{fontSize: 17}}>Your Dashboard</Text>
+        </View>
+        <View style={styles.bottom}>
+          <View style={styles.tabs}>
+            <TouchableOpacity style={ this.state.teamsTab ? styles.tabActive : styles.tab } onPress={()=>this.changeTab('teamsTab')}>
+              <Text style={styles.tabText}>Teams</Text>
             </TouchableOpacity>
-
-              <Text style={{fontSize: 24}}>Your Dashboard</Text>
-
+            <TouchableOpacity style={ this.state.shiftsTab ? styles.tabActive : styles.tab } onPress={()=>this.changeTab('shiftsTab')}>
+              <Text style={styles.tabText}>Shifts</Text>
+            </TouchableOpacity>
           </View>
-
         </View>
-
-        <View style={styles.tabs}>
-          <TouchableOpacity style={ this.state.teamsTab ? styles.tabActive : styles.tab } onPress={()=>this.changeTab('teamsTab')}>
-            <Text style={styles.tabText}>Teams</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={ this.state.shiftsTab ? styles.tabActive : styles.tab } onPress={()=>this.changeTab('shiftsTab')}>
-            <Text style={styles.tabText}>Shifts</Text>
-          </TouchableOpacity>
+        <View style={styles.items}>
+          <Text style={styles.username}>User: {this.props.user}</Text>
+          {teamsOrShifts}
         </View>
-        <Text>{this.props.user.username}</Text>
-        {teamsOrShifts}
       </View>
     )
   }
-
 }
 
 const styles = StyleSheet.create({
@@ -217,24 +208,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   header: {
-    flex: 1,
+    flex: .1,
     flexDirection: 'row',
     alignSelf: 'center',
     alignItems: 'center'
-  },
-  topBar: {
-    zIndex: 0,
-    height: Dimensions.get('window').height*.30,
-    left: 0,
-    top: Dimensions.get('window').height*.02,
-    width: '100%',
-    flex: .6
   },
   agenda: {
     flex: 4,
     width: '100%'
   },
-  back:{
+  back: {
     padding: 5,
     width: '10%',
     alignItems: 'center',
@@ -242,12 +225,22 @@ const styles = StyleSheet.create({
     left: 0,
     zIndex: 1
   },
+  items: {
+    marginTop: 10,
+    flex: .8,
+    alignItems: 'center',
+    width: '100%'
+  },
+   bottom: {
+    flex: .1,
+    justifyContent: 'space-between'
+  },
   tabs: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     width: '75%',
     alignItems: 'center',
-    flex: .6
+    marginBottom: 10
   },
   tab: {
     padding: 20,
@@ -286,6 +279,9 @@ const styles = StyleSheet.create({
     marginRight: 10,
     marginTop: 17
   },
+  username: {
+    marginTop: 10
+  }
 });
 
 export default UserProfile;

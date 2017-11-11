@@ -4,11 +4,12 @@ import { DrawerNavigator } from 'react-navigation';
 import UserProfileContainer from './user_profile_container';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-const InboxScreen = ({ navigation }) => (
-  <UserProfileContainer banner={'Inbox Screen'} navigation={navigation} />
+const SampleOneScreen = ({ navigation }) => (
+  <UserProfileContainer banner={'Sample One Screen'} navigation={navigation} />
 );
-InboxScreen.navigationOptions = {
-  drawerLabel: 'Inbox',
+SampleOneScreen.navigationOptions = {
+  drawerLabel: 'Sample One',
+  title: 'Profile',
   drawerIcon: ({ tintColor }) => (
     <MaterialIcons
       name="move-to-inbox"
@@ -18,11 +19,12 @@ InboxScreen.navigationOptions = {
   ),
 };
 
-const DraftsScreen = ({ navigation }) => (
-  <UserProfileContainer banner={'Drafts Screen'} navigation={navigation} />
+const SampleTwoScreen = ({ navigation }) => (
+  <UserProfileContainer banner={'Sample Two Screen'} navigation={navigation} />
 );
-DraftsScreen.navigationOptions = {
-  drawerLabel: 'Drafts',
+SampleTwoScreen.navigationOptions = {
+  drawerLabel: 'Sample Two',
+  title: 'Profile 2',
   drawerIcon: ({ tintColor }) => (
     <MaterialIcons name="drafts" size={24} style={{ color: tintColor }} />
   ),
@@ -30,20 +32,19 @@ DraftsScreen.navigationOptions = {
 
 const DrawerExample = DrawerNavigator(
   {
-    Inbox: {
-      path: '/',
-      screen: InboxScreen,
+    SampleOne: {
+      screen: SampleOneScreen,
     },
-    Drafts: {
-      path: '/sent',
-      screen: DraftsScreen,
+    SampleTwo: {
+      screen: SampleTwoScreen,
     },
   },
   {
-    initialRouteName: 'Drafts',
+    initialRouteName: 'SampleOne',
     contentOptions: {
       activeTintColor: '#e91e63',
     },
+    title: 'Profile'
   }
 );
 

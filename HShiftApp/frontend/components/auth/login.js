@@ -20,54 +20,47 @@ class Login extends React.Component {
       email: '',
       password: ''
     }
-
-    this.onSignIn = this.onSignIn.bind(this);
   }
 
-  onSignIn() {
-    console.log(this.props.state);
-
+  onSignIn = () => {
     // this.props.login(this.state);
     this.props.receiveCurrentUser('123');
 
   }
 
   render() {
-      return (
-        <View style={styles.container}>
-          <View style={styles.titleContainer}>
-            <Text style={styles.title}>
-              Holy Shift App
-            </Text>
-          </View>
-          <View style={styles.inputs}>
-            <View style={styles.field}>
-              <Icon name={`email-outline`} size={26} color='#000053'/>
-              <TextInput
-                onChangeText={text => this.setState({email: text})}
-                placeholder="Email"
-                style={styles.textInput}/>
-            </View>
-            <View style={styles.field}>
-              <Icon name={`lock-outline`} size={26} color='#000053'/>
-              <TextInput
-                onChangeText={text => this.setState({password: text})}
-                placeholder="Password"
-                secureTextEntry={true}
-                style={styles.textInput}/>
-            </View>
-            <View style={styles.buttonContainer}>
-              <TouchableOpacity style={styles.login} onPress={this.onSignIn}>
-                <Text style={styles.loginText}>Log In</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-
+    return (
+      <View style={styles.container}>
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}>
+            Holy Shift App
+          </Text>
         </View>
-      );
-    }
-
-
+        <View style={styles.inputs}>
+          <View style={styles.field}>
+            <Icon name={`email-outline`} size={26} color='#000053'/>
+            <TextInput
+              onChangeText={text => this.setState({email: text})}
+              placeholder="Email"
+              style={styles.textInput}/>
+          </View>
+          <View style={styles.field}>
+            <Icon name={`lock-outline`} size={26} color='#000053'/>
+            <TextInput
+              onChangeText={text => this.setState({password: text})}
+              placeholder="Password"
+              secureTextEntry={true}
+              style={styles.textInput}/>
+          </View>
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity style={styles.login} onPress={this.onSignIn}>
+              <Text style={styles.loginText}>Log In</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </View>
+    );
+  }
 };
 
 const styles = StyleSheet.create({
