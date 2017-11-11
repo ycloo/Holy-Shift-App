@@ -29,7 +29,7 @@ class TeamIndex extends React.Component {
   viewShift(shift) {
     this.props.receiveShift(shift)
     const { navigate } = this.props.navigation;
-    navigate('Menu')
+    navigate('Shift')
   }
 
   render() {
@@ -122,7 +122,5 @@ const styles = StyleSheet.create({
     left: 0
   }
 });
-
-
 
 export default TeamIndex;

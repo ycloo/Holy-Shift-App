@@ -22,12 +22,10 @@ class SignUp extends React.Component {
       password: '',
       firstName: '',
       lastName: ''
-    }
-
-    this.onSignUp = this.onSignUp.bind(this);
+    };
   }
 
-  onSignUp() {
+  onSignUp = () => {
     // let {dispatch, fields: {email, password}} = this.props;
     console.log(this.state);
     // dispatch(signupUser(email.value, password.value)).then(() => {

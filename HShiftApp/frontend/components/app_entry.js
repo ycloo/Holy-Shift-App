@@ -24,7 +24,7 @@ class AppEntry extends React.Component {
         );
       } else {
         return (
-          <AuthMain />
+          <AuthMain/>
         );
       }
     };
