@@ -23,15 +23,15 @@ export const removeErrors = () => ({
 export const logoutUser = () => ({
   type: LOGOUT_USER
 });
-
-export const login = async user => dispatch => {
-  try {
-    const user = JSON.parse(await APIUtil.login(user));
-    dispatch(receiveCurrentUser(user));
-  } catch (err) {
-    dispatch(receiveErrors(errors.responseJSON)
-  }
-}
+//
+// export const login = async user => dispatch => {
+//   try {
+//     const user = JSON.parse(await APIUtil.login(user));
+//     dispatch(receiveCurrentUser(user));
+//   } catch (err) {
+//     dispatch(receiveErrors(errors.responseJSON)
+//   }
+// }
 // export const login = user => dispatch => {
 //   return axios.post('http://localhost:3000/v1/signin', user)
 //   .then(res => {
