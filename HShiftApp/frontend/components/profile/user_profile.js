@@ -19,7 +19,6 @@ import TeamIndexContainer from '../team/team_index_container';
 import {Agenda} from 'react-native-calendars';
 import { DrawerNavigator } from 'react-navigation';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import * as APIUtil from '../../util/team_util';
 
 class UserProfile extends React.Component {
   constructor(props) {
@@ -105,9 +104,8 @@ class UserProfile extends React.Component {
     navigate('Shift', {shift})
   }
 
-  async navigateToTeam(team) {
-    let team1 = JSON.parse(await APIUtil.fetchTeam(1));
-    console.log(team1);
+  navigateToTeam = (team) => {
+    this.props.requestTeam(1);
     // const { navigate } = this.props.navigation;
     // navigate('Team', {team})
   }
