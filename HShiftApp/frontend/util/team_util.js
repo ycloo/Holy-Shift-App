@@ -1,4 +1,5 @@
 import TEAM_URL from '../api';
+import TEAMS_URL from '../api';
 
 export const fetchTeams = userId => {
   return fetch(TEAMS_URL, {
@@ -6,7 +7,24 @@ export const fetchTeams = userId => {
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
-    }
+    },
+    body: JSON.stringify({
+      userId
+    })
+  })
+}
+
+export const createTeam = (userId, team) => {
+  return fetch(TEAMS_URL, {
+    method: "POST",
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      userId,
+      team
+    })
   })
 }
 
@@ -32,7 +50,7 @@ export const deleteTeam = teamId => {
 
 export const updateTeam = (teamId, team) => {
   return fetch(TEAM_URL(teamId), {
-    method: "DELETE",
+    method: "PATCH",
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',

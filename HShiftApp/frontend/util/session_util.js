@@ -12,3 +12,13 @@ export const login = user => {
     })
   })
 };
+
+export const logout = () => {
+  return fetch(SIGNIN_URL, {
+    method: "DELETE",
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    }
+  })
+}
