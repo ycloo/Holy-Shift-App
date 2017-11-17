@@ -1,3 +1,5 @@
+import * as APIUtil from '../util/team_util';
+
 export const RECEIVE_SINGLE_TEAM = 'RECEIVE_SINGLE_TEAM';
 export const RECEIVE_ALL_TEAMS = 'RECEIVE_ALL_TEAMS';
 
@@ -14,3 +16,14 @@ export const receiveTeams = teams => {
     teams
   }
 }
+
+export const requestTeam = team => dispatch => {
+  return APIUtil.fetchTeam(team).then(
+    team => dispatch(receiveTeam(team))
+  )
+}
+
+// export const fetchTeams = userId => dispatch => {
+//   const team = JSON.parse(await APIUtil.fetchTeam(userId));
+//   console.log(team);
+// }

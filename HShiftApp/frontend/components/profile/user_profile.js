@@ -105,9 +105,9 @@ class UserProfile extends React.Component {
   }
 
   navigateToTeam = (team) => {
-    this.props.receiveTeam(team);
-    const { navigate } = this.props.navigation;
-    navigate('Team', {team})
+    this.props.requestTeam(1);
+    // const { navigate } = this.props.navigation;
+    // navigate('Team', {team})
   }
 
   changeTab = (tab) => {
